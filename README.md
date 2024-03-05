@@ -19,6 +19,8 @@ Book Log is a web app that allows users to update, view, and search the book log
 
 This project is designed and implemented using Node.js, Express.js, Axios, EJS, CSS and Bootstrap. PostgreSQL is used to persist user data. 
 
+![Screenshot](main_page_screenshot.png)
+
 ## Installation
   1. `$ git clone https://github.com/connieqian/Book-Log.git`
   2. `$ npm i`

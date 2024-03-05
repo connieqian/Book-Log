@@ -1,0 +1,57 @@
+<%- include('partials/header_w_navbar') %>
+  
+  <div class="container">
+    <h1 class="logo">
+      <%= heading %>
+    </h1>
+    <% if (locals.error) { %>
+      <p><%=error%>. Please try again.</p>
+    <% } %>
+    <!-- edit form -->
+    <% if (locals.post) { %>
+      <form id="editForm" method="post" action="/api/posts/<%=post.log_id%>">
+        <label for="title">Book Title: </label>
+        <input class="entry" type="text" name="title" value="<%=post.title %>">
+        <label for="author">Author: </label>
+        <input class="entry" type="text" name="author" value="<%=post.author %>">
+        <label for="isbn">ISBN: </label>
+        <input class="entry" type="text" name="isbn" value="<%=post.isbn %>"> 
+        <label for="rating">Rating: </label> 
+        <input class="entry" type="text" name="rating" value="<%=post.rating %>"> 
+        <label for="review">Review: </label> 
+        <textarea name="review" rows="5"><%=post.review %></textarea>
+        <label for="notes">Notes: </label>
+        <textarea name="notes" rows="5"><%=post.notes %></textarea>
+        <button class="full-width" type="submit">
+          <%= submit %>
+        </button>
+      </form>
+      <!-- new log form -->
+      <% } else {%>
+        <form id="newPostForm" method="post" action="/api/logs">
+          <input class="entry" type="text" name="title" placeholder="Book Title" required>
+          <input class="entry" type="text" name="author" placeholder="Author" required>
+          <input class="entry" type="text" name="isbn" placeholder="ISBN" required>  
+          <div class="rate">   
+            <input type="radio" id="star5" name="rating" value="5" />
+            <label for="star5" title="star5">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="star4">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="star3">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="star2">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="star1">1 star</label>
+          </div>
+          <textarea name="review" placeholder="Review" rows="5"></textarea>
+          <textarea name="notes" placeholder="Notes" rows="5"></textarea>
+          <button class="full-width" type="submit">
+            <%= submit %>
+          </button>
+        </form>
+        <% } %>
+    
+  </div>
+
+<%- include('partials/header') %>
